@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>БудСтрой | Оренда спецтехніки та вантажні перевезення у Запоріжжі</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Exo+2:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #005baa;
+            --secondary: #ff8a00;
+            --dark: #1a2b3d;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Шапка */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-family: 'Exo 2', sans-serif;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo-text {
+            color: var(--primary);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo-text span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .phone-btn {
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        .phone-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,91,170,0.2);
+        }
+        
+        /* Герой */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://i.pinimg.com/736x/06/9d/44/069d44e0c672622ab410efee48702ef8.jpg') center/cover;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .btn:hover {
+            background: #ff9e20;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* О компании */
+        .about {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-family: 'Exo 2', sans-serif;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Услуги */
+        .services {
+            background: #f8f9fa;
+            padding: 100px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .service-content ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .service-content ul li {
+            margin-bottom: 8px;
+        }
+        
+        /* Наши преимущества */
+        .advantages {
+            padding: 100px 0;
+        }
+        
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .advantage-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        
+        .advantage-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 32px;
+        }
+        
+        .advantage-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* Контакты */
+        .contact {
+            padding: 100px 0;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 5px;
+        }
+        
+        .contact-text a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-text a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-map {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .contact-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Футер */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background: var(--secondary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-col ul {
+            list-style: none;
+        }
+        
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        
+        /* Адаптив */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                padding: 15px;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px 10px;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
+            }
+            
+            .section-title h2 {
+                font-size: 30px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding-top: 120px;
+                min-height: auto;
+                height: auto;
+                padding-bottom: 60px;
+            }
+            
+            .services-grid, .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-img">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        <path d="M20 17l-5-3 5-3"></path>
+                        <path d="M4 17l5-3-5-3"></path>
+                    </svg>
+                </div>
+                <div class="logo-text">Буд<span>Строй</span></div>
+            </a>
+            
+            <nav>
+                <ul>
+                    <li><a href="#about">Про компанію</a></li>
+                    <li><a href="#services">Послуги</a></li>
+                    <li><a href="#advantages">Переваги</a></li>
+                    <li><a href="#contact">Контакти</a></li>
+                </ul>
+            </nav>
+            
+            <div class="phones"><a href="tel:+380504848442" class="phone-btn">+38 (050) 484-84-42</a> <a href="tel:+380676122083" class="phone-btn">+38 (067) 612-20-83</a></div>
+        </div>
+    </header>
+
+    <!-- Герой -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Професійні послуги: оренда спецтехніки та доставка будівельних матеріалів</h1>
+                <p>Повний комплекс послуг з перевезення вантажів будь-якої складності у Запоріжжі та по всій Україні. Надійно, швидко та за доступними цінами.</p>
+                <div class="btn-group">
+                    <a href="#contact" class="btn">Замовити дзвінок</a>
+                    <a href="#services" class="btn btn-outline">Наші послуги</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Про компанію</h2>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text fade-in delay-1">
+                    <h3>БудСтрой - надійний партнер у сфері послуг спецтехніки</h3>
+                    <p>Наша компанія вже понад 10 років надає послуги оренди спецтехніки та вантажних перевезень. Ми маємо сучасний парк техніки та професійну команду, готову вирішити будь-які завдання.</p>
+                    <p>Основні принципи нашої роботи - це надійність, пунктуальність та індивідуальний підхід до кожного клієнта. Ми гарантуємо якісне виконання робіт у обумовлені терміни.</p>
+                    <p>Наші фахівці мають багаторічний досвід роботи у сфері будівництва та вантажних перевезень, що дозволяє нам знаходити оптимальні рішення навіть для найскладніших завдань.</p>
+                </div>
+                
+                <div class="about-img fade-in delay-2">
+                    <img src="https://i.pinimg.com/736x/e8/46/54/e846543fbea830957acb5e9be06b3f88.jpg" alt="Наша команда">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Наші послуги</h2>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/0c/97/89/0c978958e6ae96d0dd7365f4f1787961.jpg" alt="Оренда автокранів">
+                    </div>
+                    <div class="service-content">
+                        <h3>Оренда автокранів</h3>
+                        <ul>
+                            <li>Автокрани від 10 до 100 тонн</li>
+                            <li>Монтаж будівельних конструкцій</li>
+                            <li>Вантажно-розвантажувальні роботи</li>
+                            <li>Робота на будівельних майданчиках</li>
+                            <li>Кваліфіковані оператори</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in delay-1">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/83/fe/79/83fe79e78c8fc82a42d09fc245a26c20.jpg" alt="Кран-маніпулятори">
+                    </div>
+                    <div class="service-content">
+                        <h3>Кран-маніпулятори</h3>
+                        <ul>
+                            <li>Вантажоперевезення від 1 до 40 тонн</li>
+                            <li>Перевезення та встановлення обладнання</li>
+                            <li>Роботи в обмежених умовах</li>
+                            <li>Швидке виконання замовлень</li>
+                            <li>Перевезення будматеріалів</li>
+                            <li>Послуги з розвантаження</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in delay-2">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/7a/ed/aa/7aedaa1afc96add228e77201ba938596.jpg" alt="Самоскиди">
+                    </div>
+                    <div class="service-content">
+                        <h3>Самоскиди</h3>
+                        <ul>
+                            <li>Вантажоперевезення від 1 до 40 тонн</li>
+                            <li>Перевезення сипучих матеріалів</li>
+                            <li>Вивіз будівельного сміття</li>
+                            <li>Доставка піску, щебеню, чорнозему</li>
+                            <li>Робота по місту та області</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/9b/30/51/9b30514c35ad46f16e97d563856e53ff.jpg" alt="Екскаватори">
+                    </div>
+                    <div class="service-content">
+                        <h3>Екскаватори</h3>
+                        <ul>
+                            <li>Гусеничні та колісні моделі</li>
+                            <li>Розробка котлованів</li>
+                            <li>Траншейні роботи</li>
+                            <li>Планування території</li>
+                            <li>Різні типи навісного обладнання</li>
+                            <li>Демонтажні роботи</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in delay-1">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/7b/29/56/7b29565290a7736d9f246cf34d7549fc.jpg" alt="Негабаритні перевезення">
+                    </div>
+                    <div class="service-content">
+                        <h3>Негабаритні перевезення</h3>
+                        <ul>
+                            <li>Спеціальні трали та платформи</li>
+                            <li>Оформлення дозвільних документів</li>
+                            <li>Супровід вантажу</li>
+                            <li>Перевезення по всій Україні</li>
+                            <li>Перевезення техніки та обладнання</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="service-card fade-in delay-2">
+                    <div class="service-img">
+                        <img src="https://i.pinimg.com/736x/3a/cd/06/3acd06d23cc409887890370bd1c90eeb.jpg" alt="Будівельні послуги">
+                    </div>
+                    <div class="service-content">
+                        <h3>Будівельні послуги</h3>
+                        <ul>
+                            <li>Демонтаж будівель та споруд</li>
+                            <li>Розбір конструкцій</li>
+                            <li>Вивіз та утилізація сміття</li>
+                            <li>Земляні роботи</li>
+                            <li>Підготовка будмайданчиків</li>
+                            <li>Послуги бульдозерів</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="advantages" id="advantages">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Наші переваги</h2>
+            </div>
+            
+            <div class="advantages-grid">
+                <div class="advantage-card fade-in">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M16 8s-1.5 2-4 2-4-2-4-2"></path>
+                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3>Досвід</h3>
+                    <p>Понад 10 років успішної роботи на ринку вантажних перевезень</p>
+                </div>
+                
+                <div class="advantage-card fade-in delay-1">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3>Техніка</h3>
+                    <p>Сучасний парк спецтехніки, що постійно оновлюється</p>
+                </div>
+                
+                <div class="advantage-card fade-in delay-2">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                        </svg>
+                    </div>
+                    <h3>Підтримка</h3>
+                    <p>Цілодобова підтримка клієнтів та оперативне вирішення питань</p>
+                </div>
+                
+                <div class="advantage-card fade-in delay-3">
+                    <div class="advantage-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+                        </svg>
+                    </div>
+                    <h3>Якість</h3>
+                    <p>Гарантія якості виконуваних робіт та дотримання термінів</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Контакти</h2>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info fade-in">
+                    <h3>Зв'яжіться з нами</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Телефони</h4>
+                            <a href="tel:+380504848442">+38 (050) 484-84-42</a><br>
+                            <a href="tel:+380676122083">+38 (067) 612-20-83</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <a href="mailto:novikovvn78@gmail.com">novikovvn78@gmail.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Адреса</h4>
+                            <p>м. Запоріжжя</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-map fade-in delay-1">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2678.032569347843!2d35.11726831563935!3d47.83863597920045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dc60cef5ff9d4b%3A0x4a3ec1d9b5b4b1d5!2z0J_QuNGA0L7QstGB0LrQvtC1INGILiwgMTUsINCX0LDQv9C-0YDQvtC20YzQtSwg0JfQsNC_0L7RgNC-0LbRgdC60LDRjyDQvtCx0LvQsNGB0YLRjCwgNjkwMDA!5e0!3m2!1sru!2sua!4v1620000000000!5m2!1sru!2sua" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    
+<!-- Футер -->
+<footer>
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>БудСтрой</h3>
+                <p>Професійні послуги оренди спецтехніки та вантажних перевезень у Запоріжжі.</p>
+            </div>
+            <div class="footer-col">
+                <h3>Послуги</h3>
+                <ul>
+                    <li><a href="#services">Оренда автокранів</a></li>
+                    <li><a href="#services">Кран-маніпулятори</a></li>
+                    <li><a href="#services">Самоскиди</a></li>
+                    <li><a href="#services">Ексковатори</a></li>
+                    <li><a href="#services">Негабаритні перевезення</a></li>
+                    <li><a href="#services">Будівельні послуги</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Контакти</h3>
+                <ul>
+                    <li><a href="tel:+380504848442">+38 (050) 484-84-42</a></li>
+                    <li><a href="tel:+380676122083">+38 (067) 612-20-83</a></li>
+                    <li><a href="mailto:novikovvn78@gmail.com">novikovvn78@gmail.com</a></li>
+                    <li>м. Запоріжжя</li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>© 2023 БудСтрой. Всі права захищені.</p>
+        </div>
+        </div>
+    </footer>
+</body>
+</html>
