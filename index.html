@@ -488,7 +488,20 @@
                 flex-direction: column;
             }
         }
-        
+        @media (max-width: 768px) {
+  .phones {
+    display: flex;       /* Размещаем элементы в строку */
+    flex-wrap: nowrap;   /* Запрещаем перенос на новую строку */
+    gap: 10px;           /* Расстояние между кнопками */
+    margin-left: 15px;   /* Отступ слева (опционально) */
+  }
+  
+  .phone-btn {
+    white-space: nowrap; /* Запрещаем перенос текста внутри кнопки */
+    padding: 8px 12px;   /* Уменьшаем отступы для мобильных */
+    font-size: 14px;     /* Уменьшаем размер шрифта (опционально) */
+  }
+}
         @media (max-width: 768px) {
             .header-container {
                 flex-direction: column;
